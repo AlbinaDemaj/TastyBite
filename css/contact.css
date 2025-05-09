@@ -1,0 +1,94 @@
+/* contact.css */
+body {
+    background-color: #FAFAFA;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .custom-navbar {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #6FCF97 !important;
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    color: #4F4F4F !important;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover,
+  .nav-item.active .nav-link {
+    color: #F2994A !important;
+  }
+  
+    .logo-svg {
+  height: 28px;
+  margin-top: 2px;
+}
+  .contact-section {
+    background-color: #fff;
+  }
+  
+  .contact-section form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .contact-section .form-control,
+  .contact-section .form-select,
+  .contact-section textarea {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .contact-section .btn-primary {
+    background-color: #6FCF97;
+    border: none;
+  }
+  
+  .contact-section .btn-primary:hover {
+    background-color: #56CC9D;
+  }
+  
+  .map-section {
+    padding: 40px 0;
+  }
+  
+  .map-section iframe {
+    border-radius: 8px;
+    width: 100%;
+    height: 400px;
+    border: none;
+  }
+  
+  .main-footer {
+    background-color: #1e1f21;
+  }
+  
+  .footer-link {
+    color: #bbbbbb;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #F2994A;
+    padding-left: 4px;
+  }
+  
+
+  .footer-desc {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 400px;
+  }
+  

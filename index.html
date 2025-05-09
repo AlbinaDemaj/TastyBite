@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Albina Demaj" />
+  <meta name="keywords" content="recipes, food, healthy meals, TastyBite, cooking, dinner ideas, lunch, desserts, easy recipes, nutrition" />
+  <meta name="description" content="TastyBite is a modern recipe discovery website featuring healthy, tasty and quick recipes, video tutorials, and a favorites system." />
+  <meta name="language" content="en" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#6FCF97" />
+
+  <!-- Title -->
+  <title>TastyBite - Discover Healthy & Delicious Recipes</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:title" content="TastyBite - Discover Healthy & Delicious Recipes" />
+  <meta property="og:description" content="Explore thousands of quick, healthy and tasty recipes. Save your favorites, watch videos, and cook like a pro!" />
+  <meta property="og:image" content="https://yourdomain.com/assets/img/preview.jpg" />
+  <meta property="og:site_name" content="TastyBite" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://yourdomain.com/" />
+  <meta name="twitter:title" content="TastyBite - Discover Healthy & Delicious Recipes" />
+  <meta name="twitter:description" content="Quick and healthy recipes with video guides and a personal favorite system." />
+  <meta name="twitter:image" content="https://yourdomain.com/assets/img/preview.jpg" />
+  <meta name="twitter:creator" content="@albina_dmj" />
+
+  <!-- CSS Links -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style-2.css" />
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" style="text-decoration: none;">
+      <img src="assets/img/TastyBite.svg" alt="TastyBite Logo" class="logo-svg" />
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recipes.html">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="favorites.html">Favorites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger fw-semibold" href="#" id="logoutBtn">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center d-flex align-items-center">
+    <div class="container">
+      <h1 class="hero-title">Discover Tasty Recipes with <span class="brand-text">TastyBite 🍽️</span></h1>
+      <h2 class="typed-subtitle mt-3"><span id="typed-text"></span></h2>
+      <p class="hero-subtitle">Search thousands of healthy, delicious, and easy-to-make recipes for every occasion.</p>
+      <div class="search-box mt-4 d-flex justify-content-center">
+        <div class="input-group w-75 w-md-50">
+          <input type="text" id="searchInput" class="form-control custom-search-input" placeholder="e.g. pasta, soup, salad...">
+          <button id="searchBtn" class="btn custom-search-btn">Search</button>
+        </div>
+      </div>
+    </div>
+    <div id="falling-food"></div>
+  </section>
+
+ <!-- Featured Recipes of the Day -->
+<section class="recipe-day-section py-5" style="background: linear-gradient(135deg, #fafafa, #f0fdf4);">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4 fw-bold" style="color: #6FCF97;">
+      <i class="bi bi-star-fill me-2 text-warning"></i>Featured Recipes of the Day
+    </h2>
+    <p class="text-center mb-5" style="color: #4F4F4F; max-width: 600px; margin: 0 auto;">
+      Hand-picked delicious meals to inspire your next plate. Discover something new every day! 🍲
+    </p>
+    
+    <div id="recipeOfDay" class="row g-4 justify-content-center">
+      <!-- Recipes injected dynamically via JS -->
+    </div>
+  </div>
+</section>
+
+  <!-- Modal for Recipe Details -->
+  <div class="modal fade" id="mealModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mealTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="mealDetails"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 🍏 Quiz Trigger Button -->
+<section class="quiz-section py-5 text-center" style="background: #f9fdfb">
+  <div class="container">
+    <h2 class="fw-bold mb-3" style="color: #6FCF97;">🍏 What Should You Cook Today?</h2>
+    <p class="text-muted mb-4">Get AI-powered recipe suggestions based on your preferences.</p>
+    <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#quizModal">Take the Quiz</button>
+  </div>
+</section>
+
+<!-- 🔍 Quiz Modal -->
+<div class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">🍽️ Personal Nutrition Quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="aiQuizForm">
+          <div class="mb-3">
+            <label class="form-label">1. What's your dietary preference?</label>
+            <select class="form-select" name="diet">
+              <option value="">Select</option>
+              <option>Vegetarian</option>
+              <option>Vegan</option>
+              <option>Gluten-Free</option>
+              <option>Keto</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">2. What are your cooking goals?</label>
+            <select class="form-select" name="goal">
+              <option value="">Select</option>
+              <option>Weight Loss</option>
+              <option>Muscle Gain</option>
+              <option>Healthy Eating</option>
+              <option>Quick Meals</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">3. Any allergies or ingredients to avoid?</label>
+            <input type="text" name="avoid" class="form-control" placeholder="e.g. nuts, dairy...">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">4. What cuisine do you prefer?</label>
+            <select class="form-select" name="cuisine">
+              <option value="">Select</option>
+              <option>Italian</option>
+              <option>Asian</option>
+              <option>Mediterranean</option>
+              <option>Surprise Me!</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success w-100">Get My Recipe</button>
+        </form>
+        <div id="aiResult" class="mt-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- About Section -->
+  <section id="aboutSection" class="about-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" class="img-fluid rounded" alt="Cooking">
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <h3 class="mb-3">Why TastyBite?</h3>
+          <p>TastyBite helps you discover delicious, healthy and easy-to-make meals in seconds.</p>
+          <ul>
+            <li>🍽️ Get inspired by new ideas every day.</li>
+            <li>📦 Search by ingredients, name, or category.</li>
+            <li>🌿 Enjoy a modern, beautiful cooking assistant in your pocket.</li>
+          </ul>
+          <a href="about.html" class="btn btn-primary mt-3">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+<!-- Popular Categories -->
+<section class="popular-categories py-5" style="background: linear-gradient(135deg, #f0fdf4, #ffffff);">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-3 fw-bold" style="color: #6FCF97;">🥗 Popular Categories</h2>
+    <p class="text-center mb-5" style="color: #4F4F4F; max-width: 600px; margin: 0 auto;">
+      Explore a variety of delicious food categories from around the world. Tap to discover your favorites!
+    </p>
+    <div class="row g-4" id="categoriesContainer">
+      <!-- Injected from JS -->
+    </div>
+  </div>
+</section>
+
+
+<!-- How It Works Section -->
+<section class="how-it-works py-5 bg-white" style="border-top: 1px solid #eee;">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4 fw-bold" style="color: #6FCF97;">🚀 How TastyBite Works</h2>
+    <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+      Discover recipes, build your favorites, and enjoy cooking like never before — all in 3 simple steps.
+    </p>
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="p-4 shadow-sm rounded h-100" style="background-color: #f9fdfb;">
+          <div class="mb-3 fs-1">🔍</div>
+          <h5 class="fw-semibold">Search Recipes</h5>
+          <p class="text-muted">Type your ingredients or dish name and get instant recipe suggestions.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 shadow-sm rounded h-100" style="background-color: #f9fdfb;">
+          <div class="mb-3 fs-1">❤️</div>
+          <h5 class="fw-semibold">Save Favorites</h5>
+          <p class="text-muted">Like something? Just click the heart to save it for later.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 shadow-sm rounded h-100" style="background-color: #f9fdfb;">
+          <div class="mb-3 fs-1">👨‍🍳</div>
+          <h5 class="fw-semibold">Start Cooking</h5>
+          <p class="text-muted">Follow easy step-by-step instructions and enjoy your meal!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Video Carousel Section -->
+<section class="video-section py-5" style="background: linear-gradient(135deg, #f0fdf4, #ffffff);">
+  <div class="container" data-aos="zoom-in">
+    <h2 class="text-center fw-bold mb-4" style="color: #6FCF97;">👨‍🍳 Watch & Cook Along</h2>
+    <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+      Step into the kitchen and cook delicious meals with these easy tutorials!
+    </p>
+
+    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 850px; margin: 0 auto;">
+      <div class="carousel-inner rounded shadow-lg">
+
+        <div class="carousel-item active">
+          <div class="ratio ratio-16x9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oYiRKd5l2rU?si=syzlxzXnEw_zwMQZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="ratio ratio-16x9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QeOp1MtsHPo?si=K3LvTY2E5krCAkGH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="ratio ratio-16x9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fxs1_aljKn8?si=YEK07wCadJ9XBaJi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Custom Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle" style="width: 40px; height: 40px;"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle" style="width: 40px; height: 40px;"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Tips & Tricks Section -->
+<section class="tips-section py-5 bg-white">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center fw-bold mb-4" style="color: #6FCF97;">🧾 Tips & Tricks</h2>
+    <p class="text-center text-muted mb-4" style="max-width: 600px; margin: 0 auto;">
+      Make your cooking smarter with these quick and handy tips!
+    </p>
+
+    <div class="row g-4 justify-content-center mb-4">
+      <div class="col-md-4">
+        <div class="tip-card p-4 rounded shadow" data-tilt>
+          <h5 class="fw-semibold mb-2">🥬 Keep Greens Fresh</h5>
+          <p class="text-muted">Wrap herbs or leafy greens in a paper towel before refrigerating to keep them fresh longer.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="tip-card p-4 rounded shadow" data-tilt>
+          <h5 class="fw-semibold mb-2">🔁 Substitute Ingredients</h5>
+          <p class="text-muted">Out of buttermilk? Mix 1 cup milk with 1 tbsp vinegar or lemon juice as a quick fix.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="tip-card p-4 rounded shadow" data-tilt>
+          <h5 class="fw-semibold mb-2">📊 Understand Nutrition</h5>
+          <p class="text-muted">Read labels: Ingredients are listed in descending order by weight — the first one is the most used.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- More Tips Button -->
+    <div class="text-center">
+      <a href="tips.html" class="btn btn-outline-success px-4 py-2">
+        See More Tips →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section py-5" style="background-color: #6FCF97;">
+    <div class="container text-center text-white" data-aos="fade-up">
+      <h3 class="mb-3">Want Weekly Recipe Inspiration?</h3>
+      <p class="mb-4">Subscribe to our newsletter and get fresh cooking ideas every week! 🍲</p>
+      <form id="subscribeForm" class="d-flex justify-content-center flex-wrap gap-2">
+        <input type="email" class="form-control w-50" id="subscriberEmail" placeholder="Your email address" required>
+        <button type="submit" class="btn btn-dark px-4">Subscribe</button>
+      </form>
+      <div id="subscribeMsg" class="mt-3"></div>
+    </div>
+  </section>
+
+  <footer class="main-footer text-white">
+    <div class="container py-5">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <h5 class="fw-bold">TASTYBITE</h5>
+          <p class="footer-desc">Your daily dose of delicious recipes and cooking inspiration. Fresh, simple, and healthy meals at your fingertips.</p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#"><i class="fab fa-facebook-f text-white fs-5"></i></a>
+            <a href="#"><i class="fab fa-instagram text-white fs-5"></i></a>
+            <a href="#"><i class="fab fa-twitter text-white fs-5"></i></a>
+          </div>
+        </div>
+  
+        <div class="col-md-2">
+          <h6 class="text-uppercase fw-bold mb-3">Explore</h6>
+          <ul class="list-unstyled text-muted">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="recipes.html" class="footer-link">Recipes</a></li>
+            <li><a href="favorites.html" class="footer-link">Favorites</a></li>
+            <li><a href="tips.html" class="footer-link">Tips</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-2">
+          <h6 class="text-uppercase fw-bold mb-3">Help</h6>
+          <ul class="list-unstyled text-muted">
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Terms of Use</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-md-4">
+          <h6 class="text-uppercase fw-bold mb-3">Newsletter</h6>
+          <p class="text-muted">Subscribe to get the latest recipes straight to your inbox.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2" placeholder="Your email" />
+            <button class="btn btn-success">Go</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4 text-secondary" />
+      <p class="text-center  small mb-0">&copy; 2025 TastyBite. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  
+  <!-- Bootstrap Icons (nëse nuk i ke) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  
+
+
+  <!-- Scripts -->
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/loktar00/JQuery-Snowfall/jquery.snowfall.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
