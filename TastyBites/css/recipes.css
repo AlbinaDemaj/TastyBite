@@ -1,0 +1,221 @@
+/* Recipes Page CSS */
+body {
+    background-color: #FAFAFA;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  
+  /* Navbar */
+  .custom-navbar {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #6FCF97 !important;
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    color: #4F4F4F !important;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover,
+  .nav-item.active .nav-link {
+    color: #F2994A !important;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 15px;
+  }
+  
+    .logo-svg {
+  height: 28px;
+  margin-top: 2px;
+}
+  
+  /* Cards */
+  .recipe-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .recipe-card .card-title {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Search Input */
+  #searchInputPage {
+    border: 2px solid #6FCF97;
+    padding: 12px;
+    border-radius: 8px;
+    transition: box-shadow 0.2s;
+  }
+  
+  #searchInputPage:focus {
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+  }
+  
+  /* Category Filter */
+  #categoryFilter {
+    border: 2px solid #F2994A;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  /* Button Styles */
+  .view-btn {
+    background-color: #6FCF97;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+  }
+  
+  .view-btn:hover {
+    background-color: #56CC9D;
+  }
+  
+  /* Favorites Button */
+  .btn-fav {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    padding: 5px 9px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    color: #F2994A;
+  }
+  
+  .btn-fav:hover {
+    background-color: #F2994A;
+    color: white;
+    border-color: #F2994A;
+  }
+  
+  .btn-fav.active {
+    background-color: #F2994A;
+    color: white;
+    border-color: #F2994A;
+  }
+  
+  /* Responsive */
+  @media (max-width: 767px) {
+    #searchInputPage {
+      margin-bottom: 15px;
+    }
+  }
+  
+  /* Filter Section Styling */
+.filter-section {
+  background-color: #F9F9F9;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-box input,
+.filter-box select {
+  border: 2px solid #6FCF97;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  flex: 1;
+  min-width: 200px;
+  transition: border-color 0.3s;
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+  outline: none;
+  border-color: #56CC9D;
+  box-shadow: 0 0 4px rgba(111, 207, 151, 0.3);
+}
+
+/* Optional: Filter label */
+.filter-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .filter-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+.pagination .page-link {
+  color: #6FCF97;
+  border-radius: 6px;
+  margin: 0 3px;
+  border: 1px solid #6FCF97;
+}
+
+.pagination .page-link:hover {
+  background-color: #6FCF97;
+  color: white;
+}
+
+.pagination .active .page-link {
+  background-color: #6FCF97;
+  border-color: #6FCF97;
+  color: white;
+}
+
+.ingredients-list {
+  background-color: #f8f8f8;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-left: 4px solid #6FCF97;
+  margin-top: 10px;
+}
+
+.main-footer {
+  background-color: #1e1f21;
+}
+
+.footer-link {
+  color: #bbbbbb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #F2994A;
+  padding-left: 4px;
+}
+
+
+.footer-desc {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
